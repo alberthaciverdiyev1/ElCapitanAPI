@@ -1,7 +1,6 @@
-
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema({
+const systemUserScheme = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -16,29 +15,11 @@ const userSchema = new mongoose.Schema({
         trim: true,
         lowercase: true
     },
-    companyName: {
-        type: String,
-        required: true,
-        unique: false,
-        trim: true,
-        lowercase: true
-    },
-    isCompany: {
-        type: Boolean,
-        default: false,
-        required: false,
-    },
     phone: {
         type: Number,
         required: true,
         trim: true,
         lowercase: true,
-    },
-    rate:{
-        type: Number,
-        required: false,
-        min: 0,
-        max: 5,
     },
     role: {
         type: String,
@@ -46,17 +27,15 @@ const userSchema = new mongoose.Schema({
         trim: true,
         lowercase: true,
     },
-    isVerified: {
+    isActive: {
         type: Boolean,
         default: false,
         required: false,
     },
-    fin: {
-        type: String,
-        required: true,
-        unique: true,
-        trim: true,
-        lowercase: true
+    isBlocked: {
+        type: Boolean,
+        default: false,
+        required: false,
     },
     email: {
         type: String,
@@ -83,6 +62,6 @@ const userSchema = new mongoose.Schema({
         required: false,
         default: null,
     },
-});
+})
 
-module.exports = mongoose.model('User', userSchema);
+export default mongoose.model("SystemUser", systemUserScheme);
